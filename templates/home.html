@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ url_for('static', filename='image4.avif') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: violet;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: black;
+            border: 1px solid violet;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
+
+        .logo {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+        }
+        .circle {
+            width: 80px;
+            height: 80px;
+            background-color: violet;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .vinzo {
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            background-color: violet;
+            color: white;
+            padding: 25px 50px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 50px; 
+            font-weight: bold;
+            transition: transform 0.3s; 
+            display: inline-block; 
+            border: none; 
+            font-size: 28px;
+        }
+
+        .button:hover {
+            background-color: purple;
+            transform: scale(1.1);
+        }
+
+        .profile-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: violet;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <div class="circle">
+            <span class="vinzo">Vinzo</span>
+        </div>
+    </div>
+    <div class="container">
+        <h1>VINZO</h1>
+        <p class="description">VINZO is your one-stop destination for all your campus needs. Buy, borrow, or get help - it's all here! Choose your facility of choice!</p>
+        <div class="button-container">
+            <a class="button" href="{{ url_for('buy') }}">Buy</a>
+            <a class="button" href="{{ url_for('borrow') }}">Borrow</a>
+            <a class="button" href="{{ url_for('help') }}">Help</a>
+            <a class="button" href="{{ url_for('lostandfound') }}">Lost and Found</a>
+        </div>
+        <a class="profile-button" href="{{ url_for('profile') }}">
+            <svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V6C19 7.10457 18.1046 8 17 8H7C5.89543 8 5 7.10457 5 6V5ZM5 11C5 9.89543 5.89543 9 7 9H17C18.1046 9 19 9.89543 19 11V12C19 13.1046 18.1046 14 17 14H7C5.89543 14 5 13.1046 5 12V11ZM5 17C5 15.8954 5.89543 15 7 15H17C18.1046 15 19 15.8954 19 17V18C19 19.1046 18.1046 20 17 20H7C5.89543 20 5 19.1046 5 18V17Z" fill="white"></path></svg>
+        </a>
+    </div>
+</body>
+</html>

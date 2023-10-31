@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost and Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ url_for('static', filename='image4.avif') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: violet;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            color: whitesmoke;
+            background-color: black;
+            border: 1px solid violet;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            background-color: violet;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vinzo {
+            font-weight: bold;
+            font-size: 25px;
+            color: white;
+        }
+
+        .form-container {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: violet;
+            color: whitesmoke;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .query-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .query-item {
+            background-color: black;
+            border: 1px solid whitesmoke;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <div class="circle">
+            <span class="vinzo">Vinzo</span>
+        </div>
+    </div>
+    <header>
+        <h1>Lost and Found</h1>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <h2>Report a Lost Item</h2>
+            <form id="lost-form">
+                <label for="lost-item">Lost Item:</label>
+                <input type="text" id="lost-item" required>
+
+                <label for="lost-description">Description:</label>
+                <textarea id="lost-description" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <h2>Current Lost Items:</h2>
+        <ul class="query-list" id="lost-list">
+            <!-- Lost items will be added dynamically using JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lostForm = document.getElementById('lost-form');
+            const lostList = document.getElementById('lost-list');
+
+            lostForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const lostItem = document.getElementById('lost-item').value;
+                const lostDescription = document.getElementById('lost-description').value;
+
+                if (lostItem && lostDescription) {
+                    const lostItemItem = document.createElement('li');
+                    lostItemItem.classList.add('query-item');
+                    lostItemItem.innerHTML = `
+                        <strong>Lost Item:</strong> ${lostItem}<br>
+                        <strong>Description:</strong> ${lostDescription}<br>
+                    `;
+
+                    lostList.appendChild(lostItemItem);
+                    lostForm.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
